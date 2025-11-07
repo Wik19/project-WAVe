@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART '614105150721'
+CLASS = IO
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET";
+{========================================================================================}
+ "Wurth Elektronik", "614105150721" (!) = "", "614105150721", "Other", "710-614105150721", "https://www.mouser.co.uk/ProductDetail/Wurth-Elektronik/614105150721?qs=a9WhcLg8qCw5r6rjD3973Q%3D%3D", "WURTH ELEKTRONIK - 614105150721 - MICRO USB, 2.0 TYPE B, RECEPTACLE, TH", "https://www.we-online.com/components/products/datasheet/614105150721.pdf"
+END_PART
+
+END.
