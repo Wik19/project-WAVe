@@ -20,4 +20,5 @@
   (lib (name "MHQ1005P24NGTD25")(type "KiCad")(uri "${KIPRJMOD}/components/MHQ1005P24NGTD25")(options "")(descr ""))
   (lib (name "MLG1005S1N2BTD25")(type "KiCad")(uri "${KIPRJMOD}/components/MLG1005S1N2BTD25")(options "")(descr ""))
   (lib (name "ICS-43434")(type "KiCad")(uri "${KIPRJMOD}/components/ICS-43434")(options "")(descr ""))
+  (lib (name "miniusb-horizontal")(type "KiCad")(uri "/home/marco/Documents/project-WAVe/thesis_PCB/components/miniusb-horizontal")(options "")(descr ""))
 )

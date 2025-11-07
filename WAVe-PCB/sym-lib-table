@@ -14,4 +14,5 @@
   (lib (name "435151014824")(type "KiCad")(uri "${KIPRJMOD}/components/435151014824/435151014824.kicad_sym")(options "")(descr ""))
   (lib (name "ABM8-40_000MHZ-B2-T")(type "KiCad")(uri "${KIPRJMOD}/components/ABM8-40.000MHZ-B2-T/ABM8-40_000MHZ-B2-T.kicad_sym")(options "")(descr ""))
   (lib (name "ICS-43434")(type "KiCad")(uri "${KIPRJMOD}/components/ICS-43434/ICS-43434.kicad_sym")(options "")(descr ""))
+  (lib (name "47642-1001")(type "KiCad")(uri "/home/marco/Documents/project-WAVe/thesis_PCB/components/miniusb-horizontal/47642-1001.kicad_sym")(options "")(descr ""))
 )
