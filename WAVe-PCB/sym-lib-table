@@ -15,4 +15,5 @@
   (lib (name "ABM8-40_000MHZ-B2-T")(type "KiCad")(uri "${KIPRJMOD}/components/ABM8-40.000MHZ-B2-T/ABM8-40_000MHZ-B2-T.kicad_sym")(options "")(descr ""))
   (lib (name "ICS-43434")(type "KiCad")(uri "${KIPRJMOD}/components/ICS-43434/ICS-43434.kicad_sym")(options "")(descr ""))
   (lib (name "47642-1001")(type "KiCad")(uri "/home/marco/Documents/project-WAVe/thesis_PCB/components/miniusb-horizontal/47642-1001.kicad_sym")(options "")(descr ""))
+  (lib (name "150060GS83000")(type "KiCad")(uri "${KIPRJMOD}/components/led_green_0603/150060GS83000.kicad_sym")(options "")(descr ""))
 )
