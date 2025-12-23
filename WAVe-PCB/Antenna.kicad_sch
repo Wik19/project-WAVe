@@ -1,0 +1,1655 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "fb7e8d78-8a19-4e79-8bf4-3d622c2060d4")
+	(paper "A4")
+	(lib_symbols
+		(symbol "2450AT18E0100E:2450AT18E0100E"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "ANT1"
+				(at 17.018 -4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify right)
+				)
+			)
+			(property "Value" "2450AT18E0100E"
+				(at 17.018 -6.604 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify right)
+				)
+			)
+			(property "Footprint" "ANTC3216X130N"
+				(at 19.05 -94.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.mouser.co.za/datasheet/2/611/2450AT18E0100-1666847.pdf"
+				(at 19.05 -194.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "Antennas 2.45GHZ CHIP MINI ANTENNA"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "1.3"
+				(at 19.05 -394.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "609-2450AT18E0100E"
+				(at 19.05 -494.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Johanson-Technology/2450AT18E0100E?qs=qF3SSroohZX8rqbP1IZpKA%3D%3D"
+				(at 19.05 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "JOHANSON TECHNOLOGY"
+				(at 19.05 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "2450AT18E0100E"
+				(at 19.05 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "2450AT18E0100E_1_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 11.43 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at 0 0 0)
+					(length 5.08)
+					(name "FEED"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:C_Small"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.254 1.778 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_Small"
+				(at 0.254 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Unpolarized capacitor, small symbol"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "capacitor cap"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_Small_0_1"
+				(polyline
+					(pts
+						(xy -1.524 0.508) (xy 1.524 0.508)
+					)
+					(stroke
+						(width 0.3048)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.524 -0.508) (xy 1.524 -0.508)
+					)
+					(stroke
+						(width 0.3302)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_Small_1_1"
+				(pin passive line
+					(at 0 2.54 270)
+					(length 2.032)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 90)
+					(length 2.032)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:L_Small"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "L"
+				(at 0.762 1.016 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "L_Small"
+				(at 0.762 -1.016 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Inductor, small symbol"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "inductor choke coil reactor magnetic"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Choke_* *Coil* Inductor_* L_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "L_Small_0_1"
+				(arc
+					(start 0 2.032)
+					(mid 0.5058 1.524)
+					(end 0 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 1.016)
+					(mid 0.5058 0.508)
+					(end 0 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid 0.5058 -0.508)
+					(end 0 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -1.016)
+					(mid 0.5058 -1.524)
+					(end 0 -2.032)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "L_Small_1_1"
+				(pin passive line
+					(at 0 2.54 270)
+					(length 0.508)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 90)
+					(length 0.508)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Device:R_Small"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.016 1.016)
+					)
+				)
+			)
+			(property "Value" "R_Small"
+				(at 1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor, small symbol"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_Small_0_1"
+				(rectangle
+					(start -0.762 1.778)
+					(end 0.762 -1.778)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_Small_1_1"
+				(pin passive line
+					(at 0 2.54 270)
+					(length 0.762)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 90)
+					(length 0.762)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:GND"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(junction
+		(at 142.24 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2f8e6ba0-33af-4d6b-8d06-152d5c69ceb2")
+	)
+	(junction
+		(at 162.56 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b770206b-80b4-447e-bc7f-21e26d64e606")
+	)
+	(junction
+		(at 152.4 92.71)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cc86e12e-fec9-4ccd-9c31-367e53277b0f")
+	)
+	(wire
+		(pts
+			(xy 135.89 90.17) (xy 137.16 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "17cadbad-f337-4a04-9ffa-94eef790ceea")
+	)
+	(wire
+		(pts
+			(xy 142.24 100.33) (xy 142.24 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2580e910-b505-4572-9052-c1472c0ba0e2")
+	)
+	(wire
+		(pts
+			(xy 162.56 92.71) (xy 162.56 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "320ab0e5-c9a5-41b7-a6ce-dfea4ed1bf94")
+	)
+	(wire
+		(pts
+			(xy 142.24 92.71) (xy 135.89 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "418475ce-a984-45da-bb20-d9d3a854a283")
+	)
+	(wire
+		(pts
+			(xy 152.4 92.71) (xy 154.94 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f50ea4f-3b32-437c-b82f-e6eb5efd61df")
+	)
+	(wire
+		(pts
+			(xy 152.4 100.33) (xy 152.4 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "605f5495-9d46-4a5c-8876-184a88d672d3")
+	)
+	(wire
+		(pts
+			(xy 142.24 92.71) (xy 144.78 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "63f71f5a-d8a4-4b3b-9ae3-dba806c9659d")
+	)
+	(wire
+		(pts
+			(xy 162.56 92.71) (xy 172.72 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6d6ea9cb-d2c6-4a97-8beb-7f7dea4a9a49")
+	)
+	(wire
+		(pts
+			(xy 152.4 92.71) (xy 152.4 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "728b6a71-5af7-42f9-b7da-bb79c21f8875")
+	)
+	(wire
+		(pts
+			(xy 142.24 95.25) (xy 142.24 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "987b75c2-9867-4ea5-bd51-df97ce1039dd")
+	)
+	(wire
+		(pts
+			(xy 149.86 92.71) (xy 152.4 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac8f1b3e-1365-4a6c-b2bd-236de1cdcf24")
+	)
+	(wire
+		(pts
+			(xy 142.24 90.17) (xy 142.24 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b93dbfb8-99ae-4700-8bcc-da68b318c9ac")
+	)
+	(wire
+		(pts
+			(xy 160.02 92.71) (xy 162.56 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c95f3785-c6f0-4506-8a2e-d98269c0a30c")
+	)
+	(wire
+		(pts
+			(xy 162.56 100.33) (xy 162.56 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbdb115c-a312-45be-bd68-66a52594ffda")
+	)
+	(label "antenna"
+		(at 172.72 92.71 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3b204cf3-f09a-4f45-89da-7659be7a7b46")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 142.24 101.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2443f4c3-87f5-43e3-bb16-d016fc505a38")
+		(property "Reference" "#PWR037"
+			(at 142.24 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 142.24 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 142.24 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 142.24 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 142.24 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "13399450-e79b-4c7a-9d5d-802db4bdd621")
+		)
+		(instances
+			(project "WAVe-PCB"
+				(path "/64ae932c-e667-48f3-b88a-5342485e35f4/d795ad5c-a9f2-4dd2-8330-655f8447be7e"
+					(reference "#PWR037")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 147.32 92.71 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3857bcc9-15a2-4bb6-a146-6a508b269ff9")
+		(property "Reference" "R13"
+			(at 147.32 87.63 90)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Value" "0R"
+			(at 147.32 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 147.32 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 147.32 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 147.32 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 147.32 92.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "d4e1c3ab-413a-40f3-b0b7-e7613e65e37a")
+		)
+		(pin "1"
+			(uuid "6d1ddf41-a334-4b65-8c73-07c2bebb372b")
+		)
+		(instances
+			(project "WAVe-PCB"
+				(path "/64ae932c-e667-48f3-b88a-5342485e35f4/d795ad5c-a9f2-4dd2-8330-655f8447be7e"
+					(reference "R13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 152.4 97.79 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3b300e05-3361-4561-86d6-bb7a2f3dd30a")
+		(property "Reference" "C17"
+			(at 154.94 96.5262 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TBD"
+			(at 154.94 99.0662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 152.4 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 152.4 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 152.4 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 152.4 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "31ae90d8-3f8b-4ace-9916-acf6ced4e334")
+		)
+		(pin "2"
+			(uuid "e313d304-bd66-4050-900b-2cbc29bd8936")
+		)
+		(instances
+			(project "WAVe-PCB"
+				(path "/64ae932c-e667-48f3-b88a-5342485e35f4/d795ad5c-a9f2-4dd2-8330-655f8447be7e"
+					(reference "C17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 152.4 101.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5e0bec3d-47b6-40a7-8857-824c28bf84c1")
+		(property "Reference" "#PWR030"
+			(at 152.4 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 152.4 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 152.4 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.4 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 152.4 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9d33f5f4-3249-49a4-bcbb-c99d1c0071c3")
+		)
+		(instances
+			(project "WAVe-PCB"
+				(path "/64ae932c-e667-48f3-b88a-5342485e35f4/d795ad5c-a9f2-4dd2-8330-655f8447be7e"
+					(reference "#PWR030")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 162.56 97.79 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "758103c7-b050-45d9-b596-578f3539c7ee")
+		(property "Reference" "C18"
+			(at 165.1 96.5262 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TBD"
+			(at 165.1 99.0662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 162.56 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 162.56 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 162.56 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 162.56 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b65ea68c-7048-4d1a-9a78-9fc0e4fb1d81")
+		)
+		(pin "2"
+			(uuid "4e1404d1-9d23-4931-8549-cd3f42fd791e")
+		)
+		(instances
+			(project "WAVe-PCB"
+				(path "/64ae932c-e667-48f3-b88a-5342485e35f4/d795ad5c-a9f2-4dd2-8330-655f8447be7e"
+					(reference "C18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 162.56 101.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "77d3e1b2-4a29-4713-83e4-035915d16ecc")
+		(property "Reference" "#PWR021"
+			(at 162.56 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 162.56 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 162.56 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 162.56 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 162.56 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7e95d711-f90a-4f1f-a4fc-ac056552d5cb")
+		)
+		(instances
+			(project "WAVe-PCB"
+				(path "/64ae932c-e667-48f3-b88a-5342485e35f4/d795ad5c-a9f2-4dd2-8330-655f8447be7e"
+					(reference "#PWR021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:L_Small")
+		(at 157.48 92.71 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "abc4cda7-094a-431d-89c5-971acba33b1c")
+		(property "Reference" "L2"
+			(at 157.48 87.63 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TBD"
+			(at 157.48 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Inductor_SMD:L_0402_1005Metric"
+			(at 157.48 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 157.48 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Inductor, small symbol"
+			(at 157.48 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 157.48 92.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "47e56846-1ad6-4964-98fd-092d2b2582d9")
+		)
+		(pin "1"
+			(uuid "b57a7017-9937-464c-8921-713b69f86582")
+		)
+		(instances
+			(project "WAVe-PCB"
+				(path "/64ae932c-e667-48f3-b88a-5342485e35f4/d795ad5c-a9f2-4dd2-8330-655f8447be7e"
+					(reference "L2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "2450AT18E0100E:2450AT18E0100E")
+		(at 135.89 92.71 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e17b84f0-74d4-4404-9ef1-09a8e6cc3afa")
+		(property "Reference" "ANT1"
+			(at 118.872 88.646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "2450AT18E0100E"
+			(at 118.872 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ANTC3216X130N"
+			(at 116.84 -2.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.co.za/datasheet/2/611/2450AT18E0100-1666847.pdf"
+			(at 116.84 -102.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Antennas 2.45GHZ CHIP MINI ANTENNA"
+			(at 135.89 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "1.3"
+			(at 116.84 -302.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "609-2450AT18E0100E"
+			(at 116.84 -402.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Johanson-Technology/2450AT18E0100E?qs=qF3SSroohZX8rqbP1IZpKA%3D%3D"
+			(at 116.84 -502.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "JOHANSON TECHNOLOGY"
+			(at 116.84 -602.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "2450AT18E0100E"
+			(at 116.84 -702.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 135.89 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3a4c491a-e9bb-4ae3-879c-febbc8cf8fa7")
+		)
+		(pin "2"
+			(uuid "db1c705b-c50a-4597-b10f-c5990c53c063")
+		)
+		(instances
+			(project "WAVe-PCB"
+				(path "/64ae932c-e667-48f3-b88a-5342485e35f4/d795ad5c-a9f2-4dd2-8330-655f8447be7e"
+					(reference "ANT1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 142.24 97.79 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e252734e-9cec-4444-ae6f-33df7e92f72c")
+		(property "Reference" "R14"
+			(at 144.78 96.5199 0)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "0R"
+			(at 144.78 99.0599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 142.24 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 142.24 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 142.24 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 142.24 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e3359d97-25fa-48df-b8cd-c15ad0301afe")
+		)
+		(pin "1"
+			(uuid "bd77a6e1-0529-4621-9e20-50a6ff97b74a")
+		)
+		(instances
+			(project "WAVe-PCB"
+				(path "/64ae932c-e667-48f3-b88a-5342485e35f4/d795ad5c-a9f2-4dd2-8330-655f8447be7e"
+					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:L_Small")
+		(at 139.7 90.17 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f0f5ca61-fc97-4370-8720-cf1795872545")
+		(property "Reference" "L3"
+			(at 139.7 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1n2"
+			(at 139.7 87.63 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "744786012A:INDC1608X95N"
+			(at 139.7 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.pl/ProductDetail/TDK/MLG1005S1N2BTD25?qs=u4%252BEJ9urDARF5PnqAQUamg%3D%3D"
+			(at 139.7 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Inductor, small symbol"
+			(at 139.7 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 139.7 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "7e5f324f-3cd6-4a18-afa0-cad1e4e32c94")
+		)
+		(pin "1"
+			(uuid "d0e0840d-d23a-463d-9fbf-641e5707ee23")
+		)
+		(instances
+			(project "WAVe-PCB"
+				(path "/64ae932c-e667-48f3-b88a-5342485e35f4/d795ad5c-a9f2-4dd2-8330-655f8447be7e"
+					(reference "L3")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

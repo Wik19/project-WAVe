@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.35,
-          "height": 1.85,
-          "width": 1.85
+          "drill": 0.0,
+          "height": 0.6,
+          "width": 0.522
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -685,6 +685,22 @@
     [
       "64ae932c-e667-48f3-b88a-5342485e35f4",
       "Root"
+    ],
+    [
+      "f44f55b0-6bb2-4322-a2be-fed7befd0e12",
+      "Sensors"
+    ],
+    [
+      "a02977c5-978a-4042-a4fd-5943a2793b3d",
+      "Connectors"
+    ],
+    [
+      "547fe8ec-8c71-4d43-8d86-1af1a898421d",
+      "PowerSupply"
+    ],
+    [
+      "d795ad5c-a9f2-4dd2-8330-655f8447be7e",
+      "Antenna"
     ]
   ],
   "text_variables": {}
