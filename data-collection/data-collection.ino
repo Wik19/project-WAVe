@@ -7,8 +7,8 @@
 #include <cstring>
 
 // --- Wi-Fi Configuration ---
-const char *ssid = "";
-const char *password = "";
+const char *ssid = "marco-laptop";
+const char *password = "123456789";
 const uint16_t serverPort = 8080;
 
 // --- Sensor Pin Definitions ---
