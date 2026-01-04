@@ -7,11 +7,11 @@ FILE(GLOB_RECURSE app_sources ${CMAKE_SOURCE_DIR}/src/*.*)
 
 idf_component_register(
     SRCS 
-        "src/main.c"
-        "src/wifi_conn.c"
-        "src/imu_driver.c"
-        "src/tcp_server.c"
-    
+        "main.c"
+        "imu_driver.c"    # Added this
+        "wifi_connect.c"  # Added this
+
     INCLUDE_DIRS 
-        "include"
+        "../include"      # Keeps looking in your global include folder
+        "."               # Also looks in the current folder for .h files
 )
