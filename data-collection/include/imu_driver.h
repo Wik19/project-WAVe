@@ -2,21 +2,23 @@
 #define IMU_DRIVER_H
 
 #include <stdint.h>
+#include "freertos/FreeRTOS.h"
+#include "freertos/queue.h"
 
-// Expose these constants so main.c can use them for formatting
+// Define a struct to hold one synchronized sample of data
+typedef struct {
+    int16_t gyro[3];
+    int16_t acc[3];
+} imu_data_packet_t;
+
+// Expose the Queue handle so main.c can access it
+extern QueueHandle_t imu_data_queue;
+
+// Expose scaling factors (defined in .c file)
 extern const float ACC_SCALE;
 extern const float GYRO_SCALE;
 
-/**
- * @brief Initialize the SPI bus and the LSM6DSOX sensor
- */
+// Initialization function
 void init_imu(void);
 
-/**
- * @brief Reads raw data from the sensor
- * @param gyroData Array[3] to store raw X,Y,Z gyro data
- * @param accelData Array[3] to store raw X,Y,Z accel data
- */
-void read_all_sensors(int16_t *gyroData, int16_t *accelData);
-
-#endif
+#endif // IMU_DRIVER_H

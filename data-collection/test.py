@@ -1,98 +1,138 @@
 import socket
-import struct
 import time
+import csv
 import matplotlib.pyplot as plt
-import numpy as np
 
-# --- CONFIGURATION ---
-ESP_IP = "172.20.10.10"
+# ==========================================
+# CONFIGURATION
+# ==========================================
+ESP_IP = "172.20.10.10"   # <--- REPLACE WITH YOUR IP
 PORT = 8080
-DURATION = 10             # Seconds to record
-PACKET_FORMAT = "<6h"     # Little-endian, 6 x 16-bit integers
-PACKET_SIZE = struct.calcsize(PACKET_FORMAT) # 12 bytes
+DURATION = 5.0             # Seconds to record
+FILENAME = "imu_data.csv"  # Output file name
+SAMPLE_RATE = 416          # Hz (Used for creating the time axis on the plot)
 
-# --- SENSITIVITY CONSTANTS (For Reference) ---
-# 2g Scale   = 0.061 mg/LSB
-# 250dps Scale = 8.75 mdps/LSB
-SCALE_ACC = 0.061 / 1000.0  # Convert LSB to g
-SCALE_GYR = 8.75 / 1000.0   # Convert LSB to dps
-
-def record_data(duration):
-    data_points = []
+# ==========================================
+# MAIN SCRIPT
+# ==========================================
+def main():
     print(f"Connecting to {ESP_IP}:{PORT}...")
-
+    
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(3)
+        s.settimeout(2.0) # Timeout if connection fails
         s.connect((ESP_IP, PORT))
-        s.settimeout(None)
-        
-        # Disable Nagle to receive packets immediately
-        s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
-        
-        print(f"Connected! Recording for {duration} seconds...")
-        start_time = time.time()
-        byte_buffer = b""
+        print("Connected! Starting recording...")
+    except Exception as e:
+        print(f"Failed to connect: {e}")
+        return
 
-        while (time.time() - start_time) < duration:
+    # Storage for data
+    # Structure: [ [ax, ay, az, gx, gy, gz], ... ]
+    recorded_data = []
+    
+    start_time = time.time()
+    buffer = ""
+    
+    try:
+        # Loop until the duration has passed
+        while (time.time() - start_time) < DURATION:
+            
             try:
-                chunk = s.recv(4096)
-                if not chunk: break
-                byte_buffer += chunk
-
-                while len(byte_buffer) >= PACKET_SIZE:
-                    packet = byte_buffer[:PACKET_SIZE]
-                    byte_buffer = byte_buffer[PACKET_SIZE:]
+                # Receive data
+                chunk = s.recv(4096).decode('utf-8', errors='ignore')
+                
+                if not chunk:
+                    break
+                
+                buffer += chunk
+                
+                # Process buffer for newlines
+                while "\n" in buffer:
+                    line, buffer = buffer.split("\n", 1)
+                    line = line.strip()
                     
-                    # Unpack: Accel X,Y,Z then Gyro X,Y,Z
-                    ax, ay, az, gx, gy, gz = struct.unpack(PACKET_FORMAT, packet)
-                    data_points.append((ax, ay, az, gx, gy, gz))
-
-            except BlockingIOError:
+                    if line:
+                        try:
+                            parts = line.split(',')
+                            if len(parts) == 6:
+                                # Parse floats
+                                row = [float(x) for x in parts]
+                                recorded_data.append(row)
+                        except ValueError:
+                            # Skip malformed lines
+                            continue
+                            
+            except socket.timeout:
+                # If no data comes for a while, just continue checking time
                 continue
                 
-    except Exception as e:
-        print(f"Connection Error: {e}")
+    except KeyboardInterrupt:
+        print("Recording stopped by user.")
     finally:
         s.close()
-        print(f"Done. Captured {len(data_points)} samples.")
-        print(f"Average Sample Rate: {len(data_points)/duration:.1f} Hz")
-    
-    return data_points
+        print(f"Recording finished. captured {len(recorded_data)} samples.")
 
-def plot_data(data):
-    if not data: return
+    # ==========================================
+    # 1. SAVE TO CSV
+    # ==========================================
+    if recorded_data:
+        print(f"Saving to {FILENAME}...")
+        with open(FILENAME, 'w', newline='') as f:
+            writer = csv.writer(f)
+            # Write Header
+            writer.writerow(["Acc_X", "Acc_Y", "Acc_Z", "Gyro_X", "Gyro_Y", "Gyro_Z"])
+            # Write Data
+            writer.writerows(recorded_data)
+        print("Save complete.")
 
-    # Convert to NumPy array
-    raw = np.array(data)
-    
-    # Create time axis (assuming ~416Hz)
-    t = np.linspace(0, DURATION, len(raw))
+        # ==========================================
+        # 2. PLOT DATA
+        # ==========================================
+        print("Generating Plot...")
+        
+        # Unpack columns for plotting
+        # recorded_data is list of rows, we need list of columns
+        # zip(*recorded_data) transposes the matrix
+        columns = list(zip(*recorded_data))
+        
+        ax_data = columns[0]
+        ay_data = columns[1]
+        az_data = columns[2]
+        gx_data = columns[3]
+        gy_data = columns[4]
+        gz_data = columns[5]
+        
+        # Create Time Axis based on Sample Rate
+        # t = sample_index / frequency
+        t_axis = [i / SAMPLE_RATE for i in range(len(recorded_data))]
 
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8), sharex=True)
-    
-    # Plot Accelerometer
-    ax1.plot(t, raw[:, 0], label='X', color='#ff5555', linewidth=0.6)
-    ax1.plot(t, raw[:, 1], label='Y', color='#55aa55', linewidth=0.6)
-    ax1.plot(t, raw[:, 2], label='Z', color='#5555ff', linewidth=0.6)
-    ax1.set_title(f"Accelerometer (Raw LSB) - {len(raw)} Samples")
-    ax1.set_ylabel("Amplitude (LSB)")
-    ax1.legend(loc='upper right')
-    ax1.grid(True, alpha=0.3)
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
+        
+        # Plot Accelerometer
+        ax1.plot(t_axis, ax_data, label='X', color='r', linewidth=1)
+        ax1.plot(t_axis, ay_data, label='Y', color='g', linewidth=1)
+        ax1.plot(t_axis, az_data, label='Z', color='b', linewidth=1)
+        ax1.set_title(f"Accelerometer Data ({len(recorded_data)} samples)")
+        ax1.set_ylabel("m/s^2")
+        ax1.grid(True)
+        ax1.legend(loc="upper right")
+        
+        # Plot Gyroscope
+        ax2.plot(t_axis, gx_data, label='X', color='r', linewidth=1)
+        ax2.plot(t_axis, gy_data, label='Y', color='g', linewidth=1)
+        ax2.plot(t_axis, gz_data, label='Z', color='b', linewidth=1)
+        ax2.set_title("Gyroscope Data")
+        ax2.set_ylabel("rad/s")
+        ax2.set_xlabel("Time (seconds)")
+        ax2.grid(True)
+        ax2.legend(loc="upper right")
 
-    # Plot Gyroscope
-    ax2.plot(t, raw[:, 3], label='X', color='#ff5555', linewidth=0.6)
-    ax2.plot(t, raw[:, 4], label='Y', color='#55aa55', linewidth=0.6)
-    ax2.plot(t, raw[:, 5], label='Z', color='#5555ff', linewidth=0.6)
-    ax2.set_title("Gyroscope (Raw LSB)")
-    ax2.set_ylabel("Amplitude (LSB)")
-    ax2.set_xlabel("Time (s)")
-    ax2.legend(loc='upper right')
-    ax2.grid(True, alpha=0.3)
-
-    plt.tight_layout()
-    plt.show()
+        plt.tight_layout()
+        plt.show()
+        
+    else:
+        print("No data was recorded.")
 
 if __name__ == "__main__":
-    data = record_data(DURATION)
-    plot_data(data)
+    main()

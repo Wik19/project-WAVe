@@ -1,16 +1,20 @@
 #include "wifi_connect.h"
 #include <string.h>
 #include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include "freertos/event_groups.h"
 #include "esp_system.h"
 #include "esp_wifi.h"
 #include "esp_event.h"
 #include "esp_log.h"
 #include "esp_netif.h"
-#include "lwip/err.h"
-#include "lwip/sys.h"
 
-static const char *TAG = "WIFI_CONN";
+// --- WIFI CONFIGURATION ---
+#define WIFI_SSID      "iPhone di Marco"
+#define WIFI_PASS      "987654321"
+
+// --- GLOBALS FOR WIFI ---
+static const char *TAG = "WIFI"; // Local TAG
 static EventGroupHandle_t s_wifi_event_group;
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT      BIT1
@@ -59,6 +63,7 @@ void wifi_init_sta(void) {
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));
     ESP_ERROR_CHECK(esp_wifi_start());
 
-    ESP_LOGI(TAG, "wifi_init_sta finished.");
+    esp_wifi_set_ps(WIFI_PS_NONE);
+    
     xEventGroupWaitBits(s_wifi_event_group, WIFI_CONNECTED_BIT | WIFI_FAIL_BIT, pdFALSE, pdFALSE, portMAX_DELAY);
 }

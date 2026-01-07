@@ -7,15 +7,18 @@
 #include "esp_log.h"
 #include "nvs_flash.h"
 
-// --- LwIP Includes for Sockets ---
+// --- LwIP Includes ---
 #include "lwip/err.h"
 #include "lwip/sockets.h"
 #include "lwip/sys.h"
 #include <lwip/netdb.h>
 
-// --- Our New Custom Modules ---
+// --- Custom Modules ---
 #include "imu_driver.h"
-#include "wifi_connect.h"
+// Assuming you have this file or the function definition available
+// #include "wifi_connect.h" 
+// If you don't have a header, declare the function extern:
+extern void wifi_init_sta(void);
 
 #define PORT 8080
 static const char *TAG = "MAIN_APP";
@@ -30,9 +33,16 @@ static void tcp_server_task(void *pvParameters) {
     int ip_protocol = IPPROTO_IP;
     struct sockaddr_in dest_addr;
 
-    char payload[256]; 
-    int16_t raw_acc[3];
-    int16_t raw_gyro[3];
+    // Buffer for batching: 50 bytes per line * 30 samples approx = 1500 bytes
+    char payload[1500]; 
+    int payload_offset = 0;
+    
+    // Batch size: How many samples to group before sending?
+    // 416Hz / 20 = ~20 packets per second (much healthier for WiFi)
+    const int SAMPLES_PER_BATCH = 20;
+    int sample_count = 0;
+
+    imu_data_packet_t data;
 
     while (1) {
         struct sockaddr_in *dest_addr_ip4 = (struct sockaddr_in *)&dest_addr;
@@ -47,6 +57,11 @@ static void tcp_server_task(void *pvParameters) {
             continue;
         }
 
+        // --- OPTIONAL: Enable TCP_NODELAY to disable Nagle's algorithm ---
+        int flag = 1;
+        setsockopt(listen_sock, IPPROTO_TCP, TCP_NODELAY, &flag, sizeof(flag));
+        // ----------------------------------------------------------------
+
         bind(listen_sock, (struct sockaddr *)&dest_addr, sizeof(dest_addr));
         listen(listen_sock, 1);
 
@@ -59,31 +74,47 @@ static void tcp_server_task(void *pvParameters) {
         if (sock >= 0) {
             ESP_LOGI(TAG, "Client connected!");
             
+            // Re-apply NODELAY to the accepted socket just in case
+            setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, &flag, sizeof(flag));
+
+            xQueueReset(imu_data_queue);
+            payload_offset = 0;
+            sample_count = 0;
+
             while (1) {
-                // 1. Get Data from IMU Module
-                read_all_sensors(raw_gyro, raw_acc);
+                // Wait for data
+                if (xQueueReceive(imu_data_queue, &data, portMAX_DELAY)) {
+                    
+                    // Append to buffer instead of sending immediately
+                    int written = snprintf(payload + payload_offset, sizeof(payload) - payload_offset, 
+                            "%.2f,%.2f,%.2f,%.2f,%.2f,%.2f\n", 
+                            data.acc[0] * ACC_SCALE, 
+                            data.acc[1] * ACC_SCALE, 
+                            data.acc[2] * ACC_SCALE,
+                            data.gyro[0] * GYRO_SCALE, 
+                            data.gyro[1] * GYRO_SCALE, 
+                            data.gyro[2] * GYRO_SCALE
+                    );
 
-                // 2. Format Data using constants from IMU Module
-                int len = snprintf(payload, sizeof(payload), 
-                        "%.2f,%.2f,%.2f,%.2f,%.2f,%.2f\n", 
-                        raw_acc[0] * ACC_SCALE, 
-                        raw_acc[1] * ACC_SCALE, 
-                        raw_acc[2] * ACC_SCALE,
-                        raw_gyro[0] * GYRO_SCALE, 
-                        raw_gyro[1] * GYRO_SCALE, 
-                        raw_gyro[2] * GYRO_SCALE
-                );
+                    if (written > 0) {
+                        payload_offset += written;
+                        sample_count++;
+                    }
 
-                // 3. Send over Wi-Fi
-                int err = send(sock, payload, len, 0);
-                
-                if (err < 0) {
-                    ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
-                    break; 
+                    // Send only when we have enough samples OR the buffer is getting full
+                    if (sample_count >= SAMPLES_PER_BATCH || payload_offset > (sizeof(payload) - 100)) {
+                        
+                        int err = send(sock, payload, payload_offset, 0);
+                        if (err < 0) {
+                            ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
+                            break; 
+                        }
+                        
+                        // Reset buffer
+                        payload_offset = 0;
+                        sample_count = 0;
+                    }
                 }
-
-                // 4. Rate Limit (20Hz)
-                vTaskDelay(50 / portTICK_PERIOD_MS);
             }
 
             shutdown(sock, 0);
@@ -106,6 +137,7 @@ void app_main(void) {
     }
 
     // 2. Init Modules
+    // Order matters: Init IMU first to create the Queue.
     init_imu();
     wifi_init_sta();
 
