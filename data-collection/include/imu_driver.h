@@ -20,5 +20,6 @@ extern const float GYRO_SCALE;
 
 // Initialization function
 void init_imu(void);
+void imu_task(void *pvParameters);
 
 #endif // IMU_DRIVER_H

@@ -10,6 +10,7 @@ idf_component_register(
         "main.c"
         "imu_driver.c"    # Added this
         "wifi_connect.c"  # Added this
+        "mic_driver.c"    # Added this
 
     INCLUDE_DIRS 
         "../include"      # Keeps looking in your global include folder

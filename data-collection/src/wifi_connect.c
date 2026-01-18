@@ -10,8 +10,8 @@
 #include "esp_netif.h"
 
 // --- WIFI CONFIGURATION ---
-#define WIFI_SSID      "iPhone di Marco"
-#define WIFI_PASS      "987654321"
+#define WIFI_SSID      "OlafHotspot"
+#define WIFI_PASS      "Karak123"
 
 // --- GLOBALS FOR WIFI ---
 static const char *TAG = "WIFI"; // Local TAG

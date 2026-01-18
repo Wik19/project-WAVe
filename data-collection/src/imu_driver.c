@@ -50,24 +50,6 @@ static void IRAM_ATTR imu_gpio_isr_handler(void* arg)
     }
 }
 
-// --- INTERNAL READ FUNCTION ---
-// static void read_all_sensors(imu_data_packet_t *packet) {
-//     uint8_t tx_buf[13] = {0};
-//     tx_buf[0] = REG_OUTX_L_G | 0x80; // Read bit + address
-//     uint8_t rx_buf[13] = {0};
-    
-//     spi_transaction_t t = { .length = 8 * 13, .tx_buffer = tx_buf, .rx_buffer = rx_buf };
-//     ESP_ERROR_CHECK(spi_device_transmit(spi, &t));
-
-//     // Parse bytes into the packet struct
-//     packet->gyro[0] = (int16_t)((rx_buf[2] << 8) | rx_buf[1]);
-//     packet->gyro[1] = (int16_t)((rx_buf[4] << 8) | rx_buf[3]);
-//     packet->gyro[2] = (int16_t)((rx_buf[6] << 8) | rx_buf[5]);
-//     packet->acc[0]  = (int16_t)((rx_buf[8] << 8) | rx_buf[7]);
-//     packet->acc[1]  = (int16_t)((rx_buf[10] << 8) | rx_buf[9]);
-//     packet->acc[2]  = (int16_t)((rx_buf[12] << 8) | rx_buf[11]);
-// }
-
 static void read_all_sensors(imu_data_packet_t *packet) {
     // FIX: Define buffers as static and 4-byte aligned for DMA
     // DMA requires buffers to be in DRAM and Word-Aligned.
@@ -89,8 +71,6 @@ static void read_all_sensors(imu_data_packet_t *packet) {
     
     ESP_ERROR_CHECK(spi_device_transmit(spi, &t));
 
-    // Parse bytes into the packet struct
-    // The previous logic remains the same
     packet->gyro[0] = (int16_t)((rx_buf[2] << 8) | rx_buf[1]);
     packet->gyro[1] = (int16_t)((rx_buf[4] << 8) | rx_buf[3]);
     packet->gyro[2] = (int16_t)((rx_buf[6] << 8) | rx_buf[5]);
@@ -104,14 +84,28 @@ void imu_task(void *pvParameters) {
     imu_data_packet_t packet;
 
     while(1) {
-        // Wait indefinitely for the Interrupt Semaphore
-        if(xSemaphoreTake(s_imu_data_ready_sem, portMAX_DELAY) == pdTRUE) {
+        // ------------------------------------------------------------------
+        // CHANGE 1: Use a Timeout (Watchdog) instead of waiting forever
+        // If we don't get an interrupt for 100ms, wake up anyway.
+        // ------------------------------------------------------------------
+        if(xSemaphoreTake(s_imu_data_ready_sem, 100 / portTICK_PERIOD_MS) == pdTRUE) {
             
-            // Read data from SPI
+            // Case A: Normal Interrupt Received
             read_all_sensors(&packet);
-
-            // Send to Queue (Don't block if full, just overwrite/drop)
+            
+            // Send to Queue (Non-blocking: If full, drop the packet and keep going)
             xQueueSend(imu_data_queue, &packet, 0);
+        }
+        else {
+            // ------------------------------------------------------------------
+            // CHANGE 2: The "Kickstart" Logic
+            // We timed out. The sensor might be stuck with the Interrupt Pin High.
+            // Force a read to clear the Interrupt Status Register.
+            // ------------------------------------------------------------------
+            read_all_sensors(&packet);
+            
+            // We don't send this packet to the queue (it might be stale),
+            // we just wanted to clear the hardware latch.
         }
     }
 }
@@ -120,7 +114,7 @@ void imu_task(void *pvParameters) {
 void init_imu() {
     // 1. Initialize Queue
     // imu_data_queue = xQueueCreate(10, sizeof(imu_data_packet_t));
-    imu_data_queue = xQueueCreate(128, sizeof(imu_data_packet_t));
+    imu_data_queue = xQueueCreate(512, sizeof(imu_data_packet_t));
 
     // 2. SPI Bus Init
     spi_bus_config_t buscfg = {
@@ -161,7 +155,4 @@ void init_imu() {
     write_register(REG_INT1_CTRL, 0x02); 
 
     ESP_LOGI(TAG, "IMU Initialized with Interrupts");
-
-    // 5. Start Driver Task
-    xTaskCreate(imu_task, "imu_task", 4096, NULL, 10, NULL);
 }
