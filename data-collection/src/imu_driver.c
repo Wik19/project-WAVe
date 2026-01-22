@@ -64,7 +64,7 @@ static void read_all_sensors(imu_data_packet_t *packet) {
 
     // Transaction configuration
     spi_transaction_t t = {
-        .length = 8 * 13,   // 13 bytes total transaction
+        .length = 8 * 13,   
         .tx_buffer = tx_buf,
         .rx_buffer = rx_buf
     };

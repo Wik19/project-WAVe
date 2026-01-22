@@ -202,7 +202,6 @@ void app_main(void) {
     }
 
     wifi_init_sta();
-    esp_wifi_set_ps(WIFI_PS_NONE); 
 
     init_imu();
     init_mic();

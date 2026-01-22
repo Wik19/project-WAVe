@@ -8,7 +8,7 @@ import csv
 import argparse
 import sys
 from scipy.fft import fft, fftfreq # Standard FFT library
-
+import datetime
 # ==========================================
 # DEFAULT CONFIGURATION
 # ==========================================
@@ -17,16 +17,29 @@ DEFAULT_PORT = 8080
 # Settings
 MIC_SAMPLE_RATE = 16000   
 AUDIO_PAYLOAD   = 1024    
-OUTPUT_WAV      = "mixed_recording.wav"
-OUTPUT_CSV      = "imu_data.csv"
 
 IMU_SAMPLE_RATE = 416
 IMU_PAYLOAD     = 240     
 IMU_STRUCT_FMT  = '<hhhhhh' 
 ACC_SCALE  = 0.488 / 1000.0 * 9.80665 
 GYRO_SCALE = 70.0  / 1000.0 * 0.017453 
+timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
+# Insert the timestamp into the filenames
+OUTPUT_WAV = f"mixed_recording_{timestamp}.wav"
+OUTPUT_CSV = f"imu_data_{timestamp}.csv"
 SEQ_SIZE = 4 
+
+
+# Add this before your plotting logic
+plt.rcParams.update({
+    'font.size': 14,          # Default text size
+    'axes.titlesize': 18,     # Title size (e.g., "Accelerometer (Raw)")
+    'axes.labelsize': 16,     # Axis label size (e.g., "m/s^2")
+    'xtick.labelsize': 14,    # X-axis numbers size
+    'ytick.labelsize': 14,    # Y-axis numbers size
+    'legend.fontsize': 14     # Legend text size
+})
 
 # ==========================================
 # HELPER
